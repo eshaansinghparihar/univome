@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { View, StyleSheet,SafeAreaView ,Alert,Button,TouchableOpacity,Text, ImageBackground } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import { Input,Card, Icon,  CheckBox} from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 import {USERS} from '../shared/users';
-import HomeTeacher from './teachercomponents/Home';
 import HomeStudent from './studentcomponents/Home';
+import HomeTeacher from './teachercomponents/Home';
 class Login extends Component {
 
     constructor(props) {
@@ -30,17 +28,26 @@ class Login extends Component {
             { cancelable: false }
         );
     }
-    resetLogin=()=>{
+    resetUser=()=>{
+        this.setState({
+            user:[]
+        })
+    }
+    resetLogin=(props)=>{
         this.setState({
             username:'',
             password:'',
-        })
+        });
     }
-    verifyLogin=({navigation})=>{
-        //this.state.users.map(el=>{console.log(el);})
-        //(USERS.some(el=>{el.email===this.state.username && el.password===this.state.password}))?(<View><Text>Login Successful</Text></View>):(<View><Text>Login Failed</Text></View>);
+    handleLogin() {
+        this.setState({username: this.state.username, password: this.state.password});
+        //console.log(JSON.stringify(this.state));
+        this.verifyLogin();
+    }
+    verifyLogin=()=>{
+        this.setState({username: this.state.username, password: this.state.password});
         if(USERS.filter((user,index)=>user.email===this.state.username)[0]){
-            {
+            
                 const userDetails=USERS.filter(user=>user.email===this.state.username)[0];
                 if(userDetails.password===this.state.password){
                     console.log('Login Succesful');
@@ -49,23 +56,26 @@ class Login extends Component {
                     })
                     console.log(this.state);
                     if(userDetails.teacher){
-                        //navigation.navigate('Settings')
+                       console.log('Teacher Profile');
                     }
                     else if(!(userDetails.teacher)){
-
+                        console.log('Student Profile');
+                       
                     }
+                    return true;
                 }
                 else{
                     Alert.alert(
                         'Invalid Credentials',
                         'The Username and Password Entered Do Not Match.Please try again.',
                         [
-                        {text: 'OK', onPress: () => {console.log('OK Pressed');this.resetLogin();}, style: 'cancel'},
+                        {text: 'OK', onPress: () => {console.log('OK Pressed');this.resetLogin();this.resetUser}, style: 'cancel'},
                         ],
                         { cancelable: false }
                     );
+                    return false;
                 }
-            }
+            
            
         }
         else{
@@ -73,21 +83,19 @@ class Login extends Component {
                 'Invalid User',
                 'User Not Found ! Signup is required before Login-In',
                 [
-                {text: 'OK', onPress: () => {console.log('OK Pressed');this.resetLogin();}, style: 'cancel'},
+                {text: 'OK', onPress: () => {console.log('OK Pressed');this.resetLogin();this.resetUser}, style: 'cancel'},
                 ],
                 { cancelable: false }
             );
+            return false;
         }
-    }
-    handleLogin() {
-        this.setState({username: this.state.username, password: this.state.password});
-        //console.log(JSON.stringify(this.state));
-        this.verifyLogin();
     }
 
     render() {
         const image = { uri: "https://lh3.googleusercontent.com/VlX6gdRjxluiU4QReKhPW4zVZQdxmcQqzrLkzDBUZGWqqIVOZz4ZQxqDGObMR0KvJKxxC4v-yGdnpFHJkHBFWWffkuWZBbsg9sxGVOI=w0" };
+        
         return (
+            
             <SafeAreaView style={styles.container}>
                 
                 <View style={styles.text}>
@@ -117,7 +125,18 @@ class Login extends Component {
                         />*/}
                         <TouchableOpacity
                                     style={styles.login}
-                                    onPress={() => this.handleLogin()}
+                                    onPress={() => {
+                                        this.handleLogin();
+                                        if(this.verifyLogin()){
+                                            if(!(this.state.user.teacher)){
+                                                this.props.navigation.navigate('HomeStudent',{user:this.state.user});
+                                            }
+                                            else{
+                                                this.props.navigation.navigate('HomeTeacher',{user:this.state.user});
+                                                console.log("Teacher:"+this.state.user.teacher);
+                                            }
+                                        }
+                                    }}
                         >
                                     <Text style={styles.text}> Login </Text>
                             </TouchableOpacity>
@@ -142,6 +161,7 @@ class Login extends Component {
                 </View>
                
              </SafeAreaView>
+             
         );
     }
 
@@ -150,11 +170,12 @@ class Login extends Component {
 const styles = StyleSheet.create({
     container: {
     justifyContent:'center',
-    marginHorizontal: 16,
-
+    marginHorizontal: 60,
+    marginTop:200,
+    margin: 10,
     },
     formInput: {
-        margin: 10,
+        //margin: 10,
         flexDirection: 'row',
         
     },

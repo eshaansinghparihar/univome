@@ -10,7 +10,7 @@ class HomeStudent extends Component {
         console.log(this.props);
         return(
             <View>
-                <Text>hello ! {this.props.data.name}</Text>
+                <Text>hello ! </Text>
                 <Text>This is the Homepage for Students</Text>
                 
             </View>

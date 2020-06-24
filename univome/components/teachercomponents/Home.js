@@ -7,9 +7,10 @@ class HomeTeacher extends Component {
         super(props);
     }
     render(){
+        console.log("Recived props"+this.props);
         return(
             <View>
-                <Text>hello ! {this.props.data.name}</Text>
+                <Text>hello ! </Text>
                 <Text>This is the Homepage for Teachers</Text>
             </View>
         );

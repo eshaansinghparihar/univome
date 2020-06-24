@@ -9,6 +9,7 @@ class HomeTeacher extends Component {
     render(){
         return(
             <View>
+                <Text>hello ! {this.props.data.name}</Text>
                 <Text>This is the Homepage for Teachers</Text>
             </View>
         );

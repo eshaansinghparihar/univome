@@ -1,211 +1,229 @@
-export const COURSES={
-    "3":{
-    "A":[
+export const COURSES=[
     {
-    id:0,
+    id:311,
     subname:'MATHS',
     subcode:'18CS031',
     teacher_id:9,
+    section:"3A"
     },
     {
-    id:1,
+    id:321,
     subname:'DSA',
     subcode:'18CS032',
     teacher_id:2,
+    section:"3A"
     },
     {
-    id:2,
+    id:331,
     subname:'ADE',
     subcode:'18CS033',
     teacher_id:3,
+    section:"3A"
     },
     {
-    id:3,
+    id:341,
     subname:'CO',
     subcode:'18CS034',
     teacher_id:6,
+    section:"3A"
     },
     {
-    id:0,
+    id:351,
     subname:'SE',
     subcode:'18CS035',
     teacher_id:7,
+    section:"3A"
     },
     {
-    id:0,
+    id:361,
     subname:'DMS',
     subcode:'18CS036',
     teacher_id:6,
+    section:"3A"
     },
     {
-    id:0,
+    id:371,
     subname:'DSA_LAB',
     subcode:'18CSL037',
     teacher_id:2,
+    section:"3A"
     },
     {
-    id:0,
+    id:381,
     subname:'ADE_LAB',
     subcode:'18CSL038',
     teacher_id:3,
+    section:"3A"
     
     },
-    ],
-    "B":[
-        {
-        id:0,
-        subname:'MATHS',
-        subcode:'18CS031',
-        teacher_id:9,
-        },
-        {
-        id:1,
-        subname:'DSA',
-        subcode:'18CS032',
-        teacher_id:2,
-        },
-        {
-        id:2,
-        subname:'ADE',
-        subcode:'18CS033',
-        teacher_id:3,
-        },
-        {
-        id:3,
-        subname:'CO',
-        subcode:'18CS034',
-        teacher_id:6,
-        },
-        {
-        id:0,
-        subname:'SE',
-        subcode:'18CS035',
-        teacher_id:7,
-        },
-        {
-        id:0,
-        subname:'DMS',
-        subcode:'18CS036',
-        teacher_id:6,
-        },
-        {
-        id:0,
-        subname:'DSA_LAB',
-        subcode:'18CSL037',
-        teacher_id:2,
-        },
-        {
-        id:0,
-        subname:'ADE_LAB',
-        subcode:'18CSL038',
-        teacher_id:3,
-        
-        },
-        ]
-},
-    '4':{
-        'A':[
-            {
-            id:0,
-            subname:'MATHS',
-            subcode:'18CS041',
-            teacher_id:9,
-            },
-            {
-            id:1,
-            subname:'DAA',
-            subcode:'18CS042',
-            teacher_id:4,
-            },
-            {
-            id:2,
-            subname:'OS',
-            subcode:'18CS043',
-            teacher_id:7,
-            },
-            {
-            id:3,
-            subname:'MES',
-            subcode:'18CS034',
-            teacher_id:8,
-            },
-            {
-            id:0,
-            subname:'OOC',
-            subcode:'18CS035',
-            teacher_id:5,
-            },
-            {
-            id:0,
-            subname:'DC',
-            subcode:'18CS036',
-            teacher_id:3,
-            },
-            {
-            id:0,
-            subname:'DAA_LAB',
-            subcode:'18CSL037',
-            teacher_id:5,
-            },
-            {
-            id:0,
-            subname:'MES_LAB',
-            subcode:'18CSL038',
-            teacher_id:8,
-            
-            },
-            ],
-            'B':[
-            {
-            id:0,
-            subname:'MATHS',
-            subcode:'18CS041',
-                    teacher_id:9,
-                    },
-                    {
-                    id:1,
-                    subname:'DAA',
-                    subcode:'18CS042',
-                    teacher_id:4,
-                    },
-                    {
-                    id:2,
-                    subname:'OS',
-                    subcode:'18CS043',
-                    teacher_id:7,
-                    },
-                    {
-                    id:3,
-                    subname:'MES',
-                    subcode:'18CS034',
-                    teacher_id:8,
-                    },
-                    {
-                    id:0,
-                    subname:'OOC',
-                    subcode:'18CS035',
-                    teacher_id:5,
-                    },
-                    {
-                    id:0,
-                    subname:'DC',
-                    subcode:'18CS036',
-                    teacher_id:3,
-                    },
-                    {
-                    id:0,
-                    subname:'DAA_LAB',
-                    subcode:'18CSL037',
-                    teacher_id:5,
-                    },
-                    {
-                    id:0,
-                    subname:'MES_LAB',
-                    subcode:'18CSL038',
-                    teacher_id:8,
-                    
-                    },
-                    ]
-                    },                
-        
-    }
+    {
+    id:312,
+    subname:'MATHS',
+    subcode:'18CS031',
+    teacher_id:9,
+    section:"3B"
+    },
+    {
+    id:322,
+    subname:'DSA',
+    subcode:'18CS032',
+    teacher_id:2,
+    section:"3B"
+    },
+    {
+    id:332,
+    subname:'ADE',
+    subcode:'18CS033',
+    teacher_id:3,
+    section:"3B"
+    },
+    {
+    id:342,
+    subname:'CO',
+    subcode:'18CS034',
+    teacher_id:6,
+    section:"3B"
+    },
+    {
+    id:352,
+    subname:'SE',
+    subcode:'18CS035',
+    teacher_id:7,
+    section:"3B"
+    },
+    {
+    id:362,
+    subname:'DMS',
+    subcode:'18CS036',
+    teacher_id:6,
+    section:"3B"
+    },
+    {
+    id:372,
+    subname:'DSA_LAB',
+    subcode:'18CSL037',
+    teacher_id:2,
+    section:"3B"
+    },
+    {
+    id:382,
+    subname:'ADE_LAB',
+    subcode:'18CSL038',
+    teacher_id:3,
+    section:"3B"
+    },
+    {
+    id:411,
+    subname:'MATHS',
+    subcode:'18CS041',
+    teacher_id:9,
+    section:"4A"
+    },
+    {
+    id:421,
+    subname:'DAA',
+    subcode:'18CS042',
+    teacher_id:4,
+    section:"4A"
+    },
+    {
+    id:431,
+    subname:'OS',
+    subcode:'18CS043',
+    teacher_id:7,
+    section:"4A"
+    },
+    {
+    id:441,
+    subname:'MES',
+    subcode:'18CS044',
+    teacher_id:8,
+    section:"4A"
+    },
+    {
+    id:451,
+    subname:'OOC',
+    subcode:'18CS045',
+    teacher_id:5,
+    section:"4A"
+    },
+    {
+    id:461,
+    subname:'DC',
+    subcode:'18CS046',
+    teacher_id:3,
+    section:"4A"
+    },
+    {
+    id:471,
+    subname:'DAA_LAB',
+    subcode:'18CSL047',
+    teacher_id:5,
+    section:"4A"
+    },
+    {
+    id:481,
+    subname:'MES_LAB',
+    subcode:'18CSL048',
+    teacher_id:8,
+    section:"4A"
+    
+    },
+    {
+    id:412,
+    subname:'MATHS',
+    subcode:'18CS041',
+    teacher_id:9,
+    section:"4B"
+    },
+    {
+    id:422,
+    subname:'DAA',
+    subcode:'18CS042',
+    teacher_id:4,
+    section:"4B"
+    },
+    {
+    id:432,
+    subname:'OS',
+    subcode:'18CS043',
+    teacher_id:7,
+    section:"4B"
+    },
+    {
+    id:442,
+    subname:'MES',
+    subcode:'18CS044',
+    teacher_id:8,
+    section:"4B"
+    },
+    {
+    id:452,
+    subname:'OOC',
+    subcode:'18CS045',
+    teacher_id:5,
+    section:"4B"
+    },
+    {
+    id:462,
+    subname:'DC',
+    subcode:'18CS046',
+    teacher_id:3,
+    section:"4B"
+    },
+    {
+    id:472,
+    subname:'DAA_LAB',
+    subcode:'18CSL047',
+    teacher_id:5,
+    section:"4B"
+    },
+    {
+    id:482,
+    subname:'MES_LAB',
+    subcode:'18CSL048',
+    teacher_id:8,
+    section:"4B"
+    },               
+
+]

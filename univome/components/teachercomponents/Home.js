@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet,Text ,Alert} from 'react-native';
-import { Card, Icon, Input, CheckBox } from 'react-native-elements';
+import { View,ScrollView, Button, StyleSheet,Text ,FlatList} from 'react-native';
+import * as Animatable from 'react-native-animatable';
+import { Card, Tile, Icon } from 'react-native-elements';
+import { COURSES } from '../../shared/courses';
+function RenderCourse(props){
+        console.log(props.courses);
+        const RenderCourses=props.courses.map((course)=>{
+            return(
+                
+                 <Animatable.View animation="fadeInRightBig" duration={2000}>                
+                     <Tile
+                         title={course.subname}
+                         caption={course.section}
+                          featured
+                         />
+                 </Animatable.View>
+                //<View />
+            );
+         })
+    return(
+        <ScrollView>
+        {RenderCourses}
+        </ScrollView>
+        
+    
+);
+    }
 class HomeTeacher extends Component {
     static navigationOptions = ({navigation})=>({
         
@@ -13,16 +38,19 @@ class HomeTeacher extends Component {
     render(){
   
         const user = this.props.navigation.getParam('user','');
-        console.log("Navigation+>"+this.props.navigation.state.params);
+        var teacherid=user.id;
         return(
-            <View>
-                <Text>hello ! {user.name}</Text>
-                <Text>This is the Homepage for Teachers</Text>
-            </View>
-        );
+        <ScrollView>
+        <Card style={styles.card}>
+        <Text style={styles.cardtext}>hello ! {user.name}</Text>
+        </Card>
+        <RenderCourse courses={COURSES.filter((course)=>course.teacher_id===teacherid)} />
+        </ScrollView>
+        );       
 
     }
 }
+
     const styles = StyleSheet.create({
         container: {
             justifyContent: 'center',
@@ -33,7 +61,22 @@ class HomeTeacher extends Component {
         },
         formButton: {
             margin: 60
-        }
+        },
+        cardtext:{
+            marginBottom:20,
+            margin:40,
+            fontSize:24,
+            fontWeight: "bold",
+            color:'#000',
+        },
+        card: {
+            alignItems: 'center',
+            backgroundColor: '#000051',
+            padding: 10,
+            color: "white",
+            borderRadius:20,
+            marginBottom:30,
+        },
     });
         
 

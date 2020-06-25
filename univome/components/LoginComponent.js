@@ -100,7 +100,9 @@ class Login extends Component {
         return (
             
             <SafeAreaView style={styles.container}>
-                
+                <Card>
+                    {/*insert College Logo here */}
+                </Card>
                 <View style={styles.text}>
                 <Input
                     placeholder="Username"
@@ -160,7 +162,6 @@ class Login extends Component {
                             </TouchableOpacity>
                     
                 </View>
-               
              </SafeAreaView>
              
         );

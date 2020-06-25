@@ -25,7 +25,35 @@ const AppStackNavigator=createStackNavigator({
         backgroundColor: "#000051",
         
     }
-    })}
+    })},
+    Announcement:{ screen: Announcement,
+      navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+          backgroundColor: "#000051",
+          
+      }
+    })},
+    Assignment:{ screen: Assignment,
+        navigationOptions: ({ navigation }) => ({
+          headerStyle: {
+            backgroundColor: "#000051",
+            
+        }
+    })},
+    Test:{ screen: Assignment,
+      navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+          backgroundColor: "#000051",
+          
+      }
+  })},
+  Dashboard:{ screen: Dashboard,
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#000051",
+        
+    }
+})},
 })
 export default function App() {
   return (

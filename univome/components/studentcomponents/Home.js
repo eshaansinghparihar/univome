@@ -12,11 +12,12 @@ function RenderCourse(props){
                  <Animatable.View animation="fadeInRightBig" duration={2000}>                
                      <Tile
                          title={course.subname}
+                         imageSrc={{ uri: course.img_uri}}
                          caption={course.subcode}
+                         fontWeight='bold'
                           featured
                          />
                  </Animatable.View>
-                //<View />
             );
          })
     return(

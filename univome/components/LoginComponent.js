@@ -100,9 +100,9 @@ class Login extends Component {
         return (
             
             <SafeAreaView style={styles.container}>
-                <Card>
-                    {/*insert College Logo here */}
-                </Card>
+                  {/*<Card style={styles.card}>
+                  insert College Logo here 
+                </Card>*/}
                 <View style={styles.text}>
                 <Input
                     placeholder="Username"
@@ -211,5 +211,9 @@ const styles = StyleSheet.create({
         borderRadius:20,
         marginBottom:30,
     },
+    card:{
+        backgroundColor: '#000051',
+    },
+    
 });
 export default Login;

@@ -8,6 +8,7 @@ export const USERS=[
     section:'B',
     usn:'1cd18cs036',
     teacher:false,
+    student:true,
     branch:'cse',
     },
     {
@@ -19,6 +20,7 @@ export const USERS=[
     section:'A',
     usn:'1cd18cs034',
     teacher:false,
+    student:true,
     branch:'cse',
     },
     {
@@ -27,6 +29,7 @@ export const USERS=[
     email:'teacher1@cambridge.edu.in',
     password:'teacher1',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -35,6 +38,7 @@ export const USERS=[
     email:'teacher2@cambridge.edu.in',
     password:'teacher2',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -43,6 +47,7 @@ export const USERS=[
     email:'teacher3@cambridge.edu.in',
     password:'teacher3',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -51,6 +56,7 @@ export const USERS=[
     email:'teacher4@cambridge.edu.in',
     password:'teacher4',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -59,6 +65,7 @@ export const USERS=[
     email:'teacher5@cambridge.edu.in',
     password:'teacher5',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -67,6 +74,7 @@ export const USERS=[
     email:'teacher6@cambridge.edu.in',
     password:'teacher6',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -75,6 +83,7 @@ export const USERS=[
     email:'teacher7@cambridge.edu.in',
     password:'teacher7',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -83,6 +92,7 @@ export const USERS=[
     email:'teacher8@cambridge.edu.in',
     password:'teacher8',
     teacher:true,
+    student:false,
     branch:'cse',
     },
     {
@@ -94,6 +104,7 @@ export const USERS=[
         section:'B',
         usn:'1cd18cs036',
         teacher:false,
+        student:true,
         branch:'cse',
         },
     ]

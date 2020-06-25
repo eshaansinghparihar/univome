@@ -6,9 +6,29 @@ import HomeTeacher from './components/teachercomponents/Home';
 import HomeStudent from './components/studentcomponents/Home';
 
 const AppStackNavigator=createStackNavigator({
-  Login:Login,
-  HomeStudent:HomeStudent,
-  HomeTeacher:HomeTeacher,
+  Login:{ screen: Login,
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#000051",
+        //color='white'
+    }
+        
+    })},
+  HomeStudent:{ screen: HomeStudent,
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#000051",
+        //color='white'
+    }
+        
+    })},
+  HomeTeacher:{ screen: HomeTeacher,
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#000051",
+        //color='white'
+    }
+    })}
 })
 export default function App() {
   return (

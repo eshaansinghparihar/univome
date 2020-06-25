@@ -5,8 +5,12 @@ import { Input,Card, Icon,  CheckBox} from 'react-native-elements';
 import {USERS} from '../shared/users';
 import HomeStudent from './studentcomponents/Home';
 import HomeTeacher from './teachercomponents/Home';
-class Login extends Component {
 
+class Login extends Component {
+    static navigationOptions = {
+        title: 'Login',
+        headerTintColor:'white',
+      };
     constructor(props) {
         super(props);
 
@@ -30,14 +34,13 @@ class Login extends Component {
     }
     resetUser=()=>{
         this.setState({
-            user:[]
-        })
-    }
-    resetLogin=(props)=>{
-        this.setState({
+            user:[],
             username:'',
             password:'',
-        });
+        })
+    }
+    resetLogin=()=>{
+        this.resetUser();
     }
     handleLogin() {
         this.setState({username: this.state.username, password: this.state.password});
@@ -93,7 +96,7 @@ class Login extends Component {
 
     render() {
         const image = { uri: "https://lh3.googleusercontent.com/VlX6gdRjxluiU4QReKhPW4zVZQdxmcQqzrLkzDBUZGWqqIVOZz4ZQxqDGObMR0KvJKxxC4v-yGdnpFHJkHBFWWffkuWZBbsg9sxGVOI=w0" };
-        
+
         return (
             
             <SafeAreaView style={styles.container}>
@@ -128,12 +131,13 @@ class Login extends Component {
                                     onPress={() => {
                                         this.handleLogin();
                                         if(this.verifyLogin()){
-                                            if(!(this.state.user.teacher)){
+                                            if((this.state.user.student)){
                                                 this.props.navigation.navigate('HomeStudent',{user:this.state.user});
+                                                this.resetUser();
                                             }
-                                            else{
+                                            else if(this.state.user.teacher){
                                                 this.props.navigation.navigate('HomeTeacher',{user:this.state.user});
-                                                console.log("Teacher:"+this.state.user.teacher);
+                                                this.resetUser();
                                             }
                                         }
                                     }}
@@ -155,9 +159,6 @@ class Login extends Component {
                                     <Text style={styles.text}> Register </Text>
                             </TouchableOpacity>
                     
-                </View>
-                <View style={styles.text}>
-                {(this.state.user.teacher)?(<HomeTeacher data={this.state.user}/>):(<HomeStudent data={this.state.user}/>)}
                 </View>
                
              </SafeAreaView>

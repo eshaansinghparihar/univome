@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
       },
     login: {
         alignItems: 'center',
-        backgroundColor: '#000',
+        backgroundColor: '#ffd600',
         padding: 10,
         color: "white",
         borderRadius:20,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     },
     register: {
         alignItems: 'center',
-        backgroundColor: '#000051',
+        backgroundColor: '#e64a19',
         padding: 10,
         color: "white",
         borderRadius:20,

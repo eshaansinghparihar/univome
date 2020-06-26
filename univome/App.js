@@ -4,29 +4,40 @@ import { createStackNavigator } from 'react-navigation';
 import Login from './components/LoginComponent';
 import HomeTeacher from './components/teachercomponents/Home';
 import HomeStudent from './components/studentcomponents/Home';
+import CourseTabNavigator from './components/studentcomponents/CourseTabNavigator';
 import Expo from 'expo';
 const AppStackNavigator=createStackNavigator({
+  
   Login:{ screen: Login,
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: "#757de8",    
+        backgroundColor: "#ffa000",    
       }
         
     })},
   HomeStudent:{ screen: HomeStudent,
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: "#000051",
+        backgroundColor: "#ffea00",
       }
     })},
   HomeTeacher:{ screen: HomeTeacher,
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: "#000051",
+        backgroundColor: "#ff9100",
         
     }
     })},
-    Announcement:{ screen: Announcement,
+  CourseTabNavigator:{ screen: CourseTabNavigator,
+      navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+          backgroundColor: "#ff0000",
+          
+      }
+      })},
+  
+  })
+    /*Announcement:{ screen: Announcement,
       navigationOptions: ({ navigation }) => ({
         headerStyle: {
           backgroundColor: "#000051",
@@ -54,7 +65,8 @@ const AppStackNavigator=createStackNavigator({
         
     }
 })},
-})
+})*/
+
 export default function App() {
   return (
       <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>

@@ -3,30 +3,7 @@ import { View,ScrollView, Button, StyleSheet,Text ,FlatList} from 'react-native'
 import * as Animatable from 'react-native-animatable';
 import { Card, Tile, Icon } from 'react-native-elements';
 import { COURSES } from '../../shared/courses';
-function RenderCourse(props){
-        console.log(props.courses);
-        const RenderCourses=props.courses.map((course)=>{
-            return(
-                
-                 <Animatable.View animation="fadeInRightBig" duration={2000}>                
-                     <Tile
-                         title={course.subname}
-                         imageSrc={{ uri: course.img_uri}}
-                         caption={course.section}
-                          featured
-                         />
-                 </Animatable.View>
-                //<View />
-            );
-         })
-    return(
-        <ScrollView>
-        {RenderCourses}
-        </ScrollView>
-        
-    
-);
-    }
+
 class HomeTeacher extends Component {
     static navigationOptions = ({navigation})=>({
         
@@ -40,12 +17,30 @@ class HomeTeacher extends Component {
   
         const user = this.props.navigation.getParam('user','');
         var teacherid=user.id;
+        const RenderCourses=({item,index})=>{
+            return(
+                
+                 <Animatable.View animation="fadeInRightBig" duration={2000}>                
+                     <Tile
+                        key={index}
+                        title={item.subname}
+                        imageSrc={{ uri: item.img_uri}}
+                        caption={item.section}
+                        fontWeight='bold'
+                        featured
+                        onPress={() => {this.props.navigation.navigate('CourseTabNavigator',{user:user, courseId:item.id ,teacherId:item.teacher_id});}}
+                         />
+                 </Animatable.View>
+            );
+         }
         return(
         <ScrollView>
         <Card style={styles.card}>
         <Text style={styles.cardtext}>hello ! {user.name}</Text>
         </Card>
-        <RenderCourse courses={COURSES.filter((course)=>course.teacher_id===teacherid)} />
+        <FlatList data={COURSES.filter((course)=>course.teacher_id===teacherid)} 
+        renderItem={RenderCourses}
+        keyExtractor={item => item.id.toString()}/>
         </ScrollView>
         );       
 

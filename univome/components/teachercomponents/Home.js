@@ -12,6 +12,16 @@ class HomeTeacher extends Component {
       });
     constructor(props) {
         super(props);
+        this.state={
+            user:{},
+            course:{},
+        }
+    }
+    componentDidMount(){
+        this.setState({
+            user:this.props.navigation.getParam('user',''),
+
+        })
     }
     render(){
   
@@ -28,7 +38,13 @@ class HomeTeacher extends Component {
                         caption={item.section}
                         fontWeight='bold'
                         featured
-                        onPress={() => {this.props.navigation.navigate('CourseTabNavigator',{user:user, courseId:item.id ,teacherId:item.teacher_id});}}
+                        onPress={() => {
+                            this.setState({
+                                course:item}
+                            //    ,() => {console.log(this.state);}
+                            );
+                            this.props.navigation.navigate('CourseTabNavigator',{data:this.state});
+                            }}
                          />
                  </Animatable.View>
             );

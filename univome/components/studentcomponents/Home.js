@@ -42,8 +42,9 @@ class HomeStudent extends Component {
                         featured
                         onPress={() => {
                         this.setState({
-                            course:item},() => {
-                                console.log(this.state);});
+                            course:item}
+                        //    ,() => {console.log(this.state);}
+                        );
                         this.props.navigation.navigate('CourseTabNavigator',{data:this.state});
                         }}
                          />

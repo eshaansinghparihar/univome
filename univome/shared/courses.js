@@ -14,7 +14,7 @@ export const COURSES=[
     subcode:'18CS032',
     teacher_id:2,
     section:"3A",
-    img_uri:"https://i.pinimg.com/originals/42/1d/38/421d386ecb02c4058952e0b862899d7f.jpg",
+    img_uri:"https://images.squarespace-cdn.com/content/v1/573ec29c4d088e3dc5d40b31/1465971755382-V5WV5AV7KPXSI33DW2FI/ke17ZwdGBToddI8pDm48kJRqFJ19D4P4EwsC9z3fiewUqsxRUqqbr1mOJYKfIPR7PCykALxo9pVzSskFJymslVRxRT0Hyt9vPB5QPw9JEfGWLDNqMSc4DWlCiiUwFevKInPi9iDjx9w8K4ZfjXt2dqbnDYQXMpcJ8DJluMCtaZOvFDHXZeDvtiivLs6TLdtCW07ycm2Trb21kYhaLJjddA/10437h-programming-code-top-hd-wallpaper.jpg?format=2500w",
     },
     {
     id:331,
@@ -79,7 +79,7 @@ export const COURSES=[
     subcode:'18CS032',
     teacher_id:2,
     section:"3B",
-    img_uri:"https://i.pinimg.com/originals/42/1d/38/421d386ecb02c4058952e0b862899d7f.jpg",
+    img_uri:"https://images.squarespace-cdn.com/content/v1/573ec29c4d088e3dc5d40b31/1465971755382-V5WV5AV7KPXSI33DW2FI/ke17ZwdGBToddI8pDm48kJRqFJ19D4P4EwsC9z3fiewUqsxRUqqbr1mOJYKfIPR7PCykALxo9pVzSskFJymslVRxRT0Hyt9vPB5QPw9JEfGWLDNqMSc4DWlCiiUwFevKInPi9iDjx9w8K4ZfjXt2dqbnDYQXMpcJ8DJluMCtaZOvFDHXZeDvtiivLs6TLdtCW07ycm2Trb21kYhaLJjddA/10437h-programming-code-top-hd-wallpaper.jpg?format=2500w",
     },
     {
     id:332,

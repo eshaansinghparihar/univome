@@ -29,21 +29,24 @@ const AppStackNavigator=createStackNavigator({
       headerStyle: {
         backgroundColor: "#ff9100",
         
+        
     }
     })},
   CourseTabNavigatorStudent:{ screen: CourseTabNavigatorStudent,
       navigationOptions: ({ navigation }) => ({
         headerStyle: {
           backgroundColor: "#ff0000",
-          
-      }
+          color: '#FFFFFF'
+      },
+      headerTintColor: '#fff',
       })},
   CourseTabNavigatorTeacher:{ screen: CourseTabNavigatorTeacher,
    navigationOptions: ({ navigation }) => ({
    headerStyle: {
    backgroundColor: "#ff0000",
             
-          }       
+          },
+   headerTintColor: '#fff',       
        })},
   DashboardTeacher:{ screen: DashboardTeacher,
         navigationOptions: ({ navigation }) => ({

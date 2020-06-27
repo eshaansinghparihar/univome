@@ -1,27 +1,45 @@
-import * as React from 'react';
-import {useState} from 'react';
-import { Text, View } from 'react-native';
+import React ,{Component } from 'react';
+import {View,Text} from 'react-native';
+import { createBottomTabNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { GiftedChat ,Feather} from 'react-native-gifted-chat';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { Icon } from 'react-native-elements'
+class ChatScreen extends Component{
+    
+    constructor(props){
+        super(props);
+        this.state={
+            messages:[
+                {"_id": "59552edd-e004-4ea5-be25-65127e420c5f", "createdAt": '2020-06-24T18:50:45.744Z', "text": "This feature can be used to make announcements, raise queries,share fun facts with the classmates , and many more interesting things! Type and send to try it now", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
+                {"_id": "da172f88-21ab-48bf-9f3a-16eb6b2f73bc", "createdAt": '2020-06-24T18:50:45.744Z', "text": "Welcome to the Student's Control Chat!", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
+            ],
+        }
+        onSend = async (message = []) => {
+            console.log(message);
+            const newMessages = await GiftedChat.append(this.state.messages, message);
+            await this.setState({messages:(newMessages)});
+          }    
+    }
+    static navigationOptions = {
+        title: 'Chat',
+        tabBarIcon: ({ tintColor }) => (
+            <Icon
+              name='message-circle'
+              type='feather'            
+              size={22}
+              iconStyle={{ color: tintColor }}
+            />
+          ) 
+};
+        
 
-function ChatScreen() {
-  const [ messages, setMessages ] = useState([
-    {"_id": "59552edd-e004-4ea5-be25-65127e420c5f", "createdAt": '2020-06-24T18:50:45.744Z', "text": "This feature can be used to make announcements, raise queries,share fun facts with the classmates , and many more interesting things! Type and send to try it now", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
-    {"_id": "da172f88-21ab-48bf-9f3a-16eb6b2f73bc", "createdAt": '2020-06-24T18:50:45.744Z', "text": "Welcome to the Student's Control Chat!", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
-  ]);
-  const onSend = async (message = []) => {
-    console.log(message);
-    const newMessages = await GiftedChat.append(messages, message);
-    await setMessages(newMessages);
-  }
-  
-  return (
-    <GiftedChat
+    
+    render(){
+        return(
+            <GiftedChat
     showUserAvatar={true}
     showAvatarForEveryMessage={true}
-    messages={ messages }
+    messages={ this.state.messages }
     onSend={ message => onSend(message) }
     scrollToBottom
         scrollToBottomComponent={() => (
@@ -41,90 +59,49 @@ function ChatScreen() {
         avatar:'https://placeimg.com/140/140/any',
     } }
   />
-  );
-}
-
-function AssignmentScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>This is where you can submit your Assignment!</Text>
-      <Text>Feature Coming Soon!</Text>
-    </View>
-  );
-}
-function TestScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>This is where you can submit your Test!</Text>
-      <Text>Feature Coming Soon!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-class TabNavigator extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state={
-      user:this.props.navigation.getParam('data').user,
-      course:this.props.navigation.getParam('data').course
+        );
     }
 }
-static navigationOptions = ({navigation,screenProps})=>({
-  title: 'Student`s Control',
-  headerTintColor:'white',
-});
-  componentDidMount(){
-        const data  = this.props.navigation.getParam('data');
-      this.setState({user:data.user,
-      course:data.course,
-     }, () => {
-       console.log(this.state);
-   });
-   }
-  componentWillMount(){
-     const data  = this.props.navigation.getParam('data');
-          this.setState({user:data.user,
-     course:data.course,
-         }, () => {
-       console.log(this.state);
- });
-  }
-  render(){
-    const data = this.props.navigation.state.params;
-    console.log(JSON.stringify(data));
-    
-        
-    return (
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-  
-              if (route.name === 'Chat') {
-                iconName = focused ? 'ios-chatboxes' : 'ios-chatbubbles';
-              } else if (route.name === 'Assignment') {
-                iconName = focused ? 'ios-list-box' : 'ios-list';
-              }else if (route.name === 'Test') {
-                iconName = focused ? 'ios-checkbox-outline' : 'ios-create';
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-          })}
-          tabBarOptions={{
-            activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
-          }}
-        >
-          <Tab.Screen name="Chat" component={ChatScreen} />
-          <Tab.Screen name="Assignment" component={AssignmentScreen} />
-          <Tab.Screen name="Test" component={TestScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-          );
+class AssignmentScreen extends Component{
+    static navigationOptions = {
+        title: 'Assignment',
+        tabBarIcon: ({ tintColor, focused }) => (
+            <Icon
+              name='file-pdf'
+              type='font-awesome-5'            
+              size={22}
+              iconStyle={{ color: tintColor }}
+            />
+          ) 
+    };
+    constructor(props){
+        super(props);
+        this.state={
+            messages:[
+
+
+            ],
         }
-  
+    }
+    render(){
+        return(
+            <View>
+                <Text>This opens up the Assignment Tab</Text>
+            </View>
+        );
+    }
 }
+const TabNavigator=createBottomTabNavigator({
+    Chat: ChatScreen,
+    Assignment:AssignmentScreen 
+},
+    {
+      tabBarOptions:{
+        // activeBackgroundColor: 'white',
+        // inactiveBackgroundColor: 'black',
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray'
+      }
+    }  
+);
 export default TabNavigator;

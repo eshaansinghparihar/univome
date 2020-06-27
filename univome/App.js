@@ -2,23 +2,26 @@ import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Login from './components/LoginComponent';
-import HomeTeacher from './components/teachercomponents/Home';
-import HomeStudent from './components/studentcomponents/Home';
-import CourseTabNavigator from './components/studentcomponents/CourseTabNavigator';
+import HomeTeacher from './components/teachercomponents/HomeTeacher';
+import HomeStudent from './components/studentcomponents/HomeStudent';
+import CourseTabNavigatorStudent from './components/studentcomponents/CourseTabNavigator';
+import CourseTabNavigatorTeacher from './components/teachercomponents/CourseTabNavigator';
+import DashboardStudent from './components/studentcomponents/Dashboard';
+import DashboardTeacher from './components/teachercomponents/Dashboard';
 import Expo from 'expo';
 const AppStackNavigator=createStackNavigator({
   
   Login:{ screen: Login,
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: "#ffa000",    
+        backgroundColor: "#00af00",    
       }
         
     })},
   HomeStudent:{ screen: HomeStudent,
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: "#ffea00",
+        backgroundColor: "#ff9100",
       }
     })},
   HomeTeacher:{ screen: HomeTeacher,
@@ -28,14 +31,34 @@ const AppStackNavigator=createStackNavigator({
         
     }
     })},
-  CourseTabNavigator:{ screen: CourseTabNavigator,
+  CourseTabNavigatorStudent:{ screen: CourseTabNavigatorStudent,
       navigationOptions: ({ navigation }) => ({
         headerStyle: {
           backgroundColor: "#ff0000",
           
       }
       })},
-  
+  CourseTabNavigatorTeacher:{ screen: CourseTabNavigatorTeacher,
+   navigationOptions: ({ navigation }) => ({
+   headerStyle: {
+   backgroundColor: "#ff0000",
+            
+          }       
+       })},
+  DashboardTeacher:{ screen: DashboardTeacher,
+        navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+        backgroundColor: "#CCCC00",
+                 
+               }       
+            })},
+  DashboardStudent:{ screen: DashboardStudent,
+              navigationOptions: ({ navigation }) => ({
+              headerStyle: {
+              backgroundColor: "#CCCC00",
+                       
+                     }       
+                  })},
   })
     /*Announcement:{ screen: Announcement,
       navigationOptions: ({ navigation }) => ({

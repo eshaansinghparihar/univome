@@ -25,7 +25,7 @@ export const USERS=[
     },
     {
     id:2,
-    name:'Mrs.Geetha',
+    name:'Mrs.Geetha P.',
     email:'teacher1@cambridge.edu.in',
     password:'teacher1',
     teacher:true,

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet,SafeAreaView ,Alert,Button,TouchableOpacity,Text, ImageBackground } from 'react-native';
+import { View, StyleSheet,SafeAreaView ,Alert,Button,TouchableOpacity,Text, ImageBackground,TextInput } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import { AntDesign } from '@expo/vector-icons';
 import { Input,Card, Icon,  CheckBox} from 'react-native-elements';
 import {USERS} from '../shared/users';
-import HomeStudent from './studentcomponents/Home';
-import HomeTeacher from './teachercomponents/Home';
+import HomeStudent from './studentcomponents/HomeStudent';
+import HomeTeacher from './teachercomponents/HomeTeacher';
 
 class Login extends Component {
     static navigationOptions = {
@@ -24,7 +25,7 @@ class Login extends Component {
     };
     registerUser=()=>{
         Alert.alert(
-            'Coming Soon',
+            'Register Coming Soon !  ',
             'This Feature is Coming Soon. For Registrations contact College Admin',
             [
             {text: 'OK', onPress: () => {console.log('OK Pressed');this.resetLogin();}, style: 'cancel'},
@@ -96,30 +97,33 @@ class Login extends Component {
 
     render() {
         const image = { uri: "https://lh3.googleusercontent.com/VlX6gdRjxluiU4QReKhPW4zVZQdxmcQqzrLkzDBUZGWqqIVOZz4ZQxqDGObMR0KvJKxxC4v-yGdnpFHJkHBFWWffkuWZBbsg9sxGVOI=w0" };
-
         return (
             
             <SafeAreaView style={styles.container}>
-                  {/*<Card style={styles.card}>
-                  insert College Logo here 
-                </Card>*/}
+                 {/* <Card style={styles.cardimage}
+                    image={require('./images/logo.png')}
+                  />
+                   */}
+                  
                 <View style={styles.text}>
                 <Input
+                    // style={{ height: 40, borderColor: 'gray', borderWidth: 1,borderRadius:20,padding:30 ,marginBottom:30}}
                     placeholder="Username"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                     onChangeText={(username) => this.setState({username})}
                     value={this.state.username}
-                    //containerStyle={styles.formInput}
+                    containerStyle={styles.formInput}
                     />
                 </View>
                 <View style={styles.text}>
                 <Input
+                    // style={{ height: 40, borderColor: 'gray', borderWidth: 1 ,borderRadius:20,padding:30,marginBottom:30}}
                     placeholder="Password"
                     leftIcon={{ type: 'font-awesome', name: 'key' }}
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({password})}
                     value={this.state.password}
-                    //containerStyle={styles.formInput}
+                    containerStyle={styles.formInput}
                     />
                 </View>
                 <View style={styles.formButton}>
@@ -144,7 +148,7 @@ class Login extends Component {
                                         }
                                     }}
                         >
-                                    <Text style={styles.text}> Login </Text>
+                                    <Text style={styles.text}><AntDesign name="right" size={28} color="white" /></Text>
                             </TouchableOpacity>
                     
                 </View>
@@ -158,7 +162,7 @@ class Login extends Component {
                                     style={styles.register}
                                     onPress={() => this.registerUser()}
                         >
-                                    <Text style={styles.text}> Register </Text>
+                                    <Text style={styles.text}><AntDesign name="up" size={28} color="white" /> </Text>
                             </TouchableOpacity>
                     
                 </View>
@@ -177,8 +181,8 @@ const styles = StyleSheet.create({
     margin: 10,
     },
     formInput: {
-        //margin: 10,
-        flexDirection: 'row',
+        marginBottom: 30,
+        
         
     },
     formButton: {
@@ -197,7 +201,7 @@ const styles = StyleSheet.create({
       },
     login: {
         alignItems: 'center',
-        backgroundColor: '#ffd600',
+        backgroundColor: '#000051',
         padding: 10,
         color: "white",
         borderRadius:20,
@@ -214,6 +218,17 @@ const styles = StyleSheet.create({
     card:{
         backgroundColor: '#000051',
     },
+    cardimage:{
+        backgroundColor: '#000051',
+        padding:10,
+        borderRadius:20,
+        marginBottom:30
+    },
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+      },
     
 });
 export default Login;

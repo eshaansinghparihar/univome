@@ -1,20 +1,62 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { GiftedChat ,Feather} from 'react-native-gifted-chat';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-function HomeScreen() {
+
+function ChatScreen() {
+  const [ messages, setMessages ] = useState([
+    {"_id": "59552edd-e004-4ea5-be25-65127e420c5f", "createdAt": '2020-06-24T18:50:45.744Z', "text": "This feature can be used to make announcements, raise queries,share fun facts with the classmates , and many more interesting things! Type and send to try it now", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
+    {"_id": "da172f88-21ab-48bf-9f3a-16eb6b2f73bc", "createdAt": '2020-06-24T18:50:45.744Z', "text": "Welcome to the Student's Control Chat!", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
+  ]);
+  const onSend = async (message = []) => {
+    console.log(message);
+    const newMessages = await GiftedChat.append(messages, message);
+    await setMessages(newMessages);
+  }
+  
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
+    <GiftedChat
+    showUserAvatar={true}
+    showAvatarForEveryMessage={true}
+    messages={ messages }
+    onSend={ message => onSend(message) }
+    scrollToBottom
+        scrollToBottomComponent={() => (
+          <Ionicons name='ios-arrow-round-down' size={30} color='#ff0000' />
+        )}
+        // renderActions={() => (
+        //   <Feather
+        //     // style={styles.uploadImage}
+        //     onPress={this.uploadImage}
+        //     name='image'
+        //     size={30}
+        //     color='#000'
+        //   />
+        // )}
+    user={ {
+        _id: 1,
+        avatar:'https://placeimg.com/140/140/any',
+    } }
+  />
   );
 }
 
-function SettingsScreen() {
+function AssignmentScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
+      <Text>This is where you can submit your Assignment!</Text>
+      <Text>Feature Coming Soon!</Text>
+    </View>
+  );
+}
+function TestScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>This is where you can submit your Test!</Text>
+      <Text>Feature Coming Soon!</Text>
     </View>
   );
 }
@@ -29,10 +71,10 @@ class TabNavigator extends React.Component{
       course:this.props.navigation.getParam('data').course
     }
 }
-  static navigationOptions = {
-    title: 'Tab',
-    headerTintColor:'white',
-  };
+static navigationOptions = ({navigation,screenProps})=>({
+  title: 'Student`s Control',
+  headerTintColor:'white',
+});
   componentDidMount(){
         const data  = this.props.navigation.getParam('data');
       this.setState({user:data.user,
@@ -52,7 +94,8 @@ class TabNavigator extends React.Component{
   render(){
     const data = this.props.navigation.state.params;
     console.log(JSON.stringify(data));
-
+    
+        
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -66,8 +109,6 @@ class TabNavigator extends React.Component{
                 iconName = focused ? 'ios-list-box' : 'ios-list';
               }else if (route.name === 'Test') {
                 iconName = focused ? 'ios-checkbox-outline' : 'ios-create';
-              }else if (route.name === 'Dashboard') {
-                iconName = focused ? 'ios-contact' : 'ios-albums';
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
@@ -77,10 +118,9 @@ class TabNavigator extends React.Component{
             inactiveTintColor: 'gray',
           }}
         >
-          <Tab.Screen name="Chat" data={this.state.user} component={HomeScreen} />
-          <Tab.Screen name="Assignment" component={SettingsScreen} />
-          <Tab.Screen name="Test" component={HomeScreen} />
-          <Tab.Screen name="Dashboard" component={SettingsScreen} />
+          <Tab.Screen name="Chat" component={ChatScreen} />
+          <Tab.Screen name="Assignment" component={AssignmentScreen} />
+          <Tab.Screen name="Test" component={TestScreen} />
         </Tab.Navigator>
       </NavigationContainer>
           );

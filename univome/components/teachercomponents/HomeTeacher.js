@@ -38,6 +38,8 @@ class HomeTeacher extends Component {
                         imageSrc={{ uri: item.img_uri}}
                         caption={item.section}
                         fontWeight='bold'
+                        titleStyle={{color:'white',fontWeight:"bold"}}
+                        captionStyle={{color:'white',fontWeight:"bold"}}
                         featured
                         onPress={() => {
                             this.setState({
@@ -56,7 +58,7 @@ class HomeTeacher extends Component {
         <Text style={styles.cardtext}>hello ! {user.name}</Text>
         <TouchableOpacity
             style={styles.move}
-            onPress={() => this.props.navigation.navigate('DashboardTeacher')}
+            onPress={() => this.props.navigation.navigate('DashboardTeacher',{data:this.state.user})}
         >
          <Text style={styles.text}><AntDesign name="rightcircleo" size={38} color="black" /></Text>
         </TouchableOpacity>

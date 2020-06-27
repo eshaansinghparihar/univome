@@ -41,6 +41,8 @@ class HomeStudent extends Component {
                         caption={item.subcode}
                         fontWeight='bold'
                         featured
+                        titleStyle={{color:'white',fontWeight:"bold"}}
+                        captionStyle={{color:'white',fontWeight:"bold"}}
                         onPress={() => {
                         this.setState({
                             course:item}
@@ -60,7 +62,7 @@ class HomeStudent extends Component {
         <Text style={styles.cardtext}>hello ! {user.name}</Text>
         <TouchableOpacity
             style={styles.move}
-            onPress={() => this.props.navigation.navigate('DashboardStudent')}
+            onPress={() => this.props.navigation.navigate('DashboardStudent',{data:this.state.user})}
         >
          <Text style={styles.text}><AntDesign name="rightcircleo" size={38} color="black" /></Text>
         </TouchableOpacity>

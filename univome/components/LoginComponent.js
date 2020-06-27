@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet,SafeAreaView ,Alert,Button,TouchableOpacity,Text, ImageBackground,TextInput } from 'react-native';
+import { View, StyleSheet,SafeAreaView ,Alert,Button,TouchableOpacity,Text, Image,TextInput } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { AntDesign } from '@expo/vector-icons';
 import { Input,Card, Icon,  CheckBox} from 'react-native-elements';
@@ -98,13 +98,17 @@ class Login extends Component {
     render() {
         const image = { uri: "https://lh3.googleusercontent.com/VlX6gdRjxluiU4QReKhPW4zVZQdxmcQqzrLkzDBUZGWqqIVOZz4ZQxqDGObMR0KvJKxxC4v-yGdnpFHJkHBFWWffkuWZBbsg9sxGVOI=w0" };
         return (
-            
-            <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
+            {/* <SafeAreaView style={styles.container}> */}
                  {/* <Card style={styles.cardimage}
                     image={require('./images/logo.png')}
                   />
                    */}
-                  
+                <Image 
+                source={{uri: 'https://engg.cambridge.edu.in//engg-uploads/media-upload/2020-02/video-banner.jpg'}} 
+                loadingIndicatorSource={require('./images/logo.png')}
+                style={styles.image} 
+                />  
                 <View style={styles.text}>
                 <Input
                     // style={{ height: 40, borderColor: 'gray', borderWidth: 1,borderRadius:20,padding:30 ,marginBottom:30}}
@@ -166,7 +170,8 @@ class Login extends Component {
                             </TouchableOpacity>
                     
                 </View>
-             </SafeAreaView>
+             {/* </SafeAreaView> */}
+             </View>
              
         );
     }
@@ -189,9 +194,9 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     image: {
-        flexDirection:'column',
-        resizeMode: "cover",
         justifyContent: "center",
+        height:180,
+        width:180
 
       },
     text: {

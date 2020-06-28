@@ -57,7 +57,7 @@ class Dashboard extends Component{
                 <Card 
                 title={data.name}>
                 <Image 
-                source={{uri: 'https://placeimg.com/140/140/any'}} 
+                source={(this.state.image===null)?{uri: 'https://placeimg.com/140/140/any'}:{uri:this.state.image}} 
                 loadingIndicatorSource={require('../images/logo.png')}
                 
                 style={styles.image} 

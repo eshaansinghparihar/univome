@@ -15,7 +15,7 @@ class ChatScreen extends Component{
         this.state={
             messages:[
                 {"_id": "59552edd-e004-4ea5-be25-65127e420c5f", "createdAt": '2020-06-24T18:50:45.744Z', "text": "This feature can be used to make announcements, inform about upcoming events,share fun facts with the students , and many more interesting things! Type and send to try it now", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
-                {"_id": "da172f88-21ab-48bf-9f3a-16eb6b2f73bc", "createdAt": '2020-06-24T18:50:45.744Z', "text": "Welcome to the Student's Control Chat!", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
+                {"_id": "da172f88-21ab-48bf-9f3a-16eb6b2f73bc", "createdAt": '2020-06-24T18:50:45.744Z', "text": "Welcome to the Teacher's Control Chat!", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
             ],
         }
         onSend = async (message = []) => {

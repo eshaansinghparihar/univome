@@ -50,13 +50,15 @@ class Dashboard extends Component{
     
     render(){
       const data = this.props.navigation.getParam('data');
+      const datagraph = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
+      const fill = 'rgb(134, 65, 244)';
         return(
             <ScrollView>
             <View style={styles.card}>
                 <Card 
                 title={data.name}>
                 <Image 
-                source={{uri: 'https://placeimg.com/140/140/any'}} 
+                source={(this.state.image===null)?{uri: 'https://placeimg.com/140/140/any'}:{uri:this.state.image}} 
                 loadingIndicatorSource={require('../images/logo.png')}
                 
                 style={styles.image} 

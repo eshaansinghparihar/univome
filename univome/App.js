@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View ,StatusBar} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Login from './components/LoginComponent';
 import HomeTeacher from './components/teachercomponents/HomeTeacher';
@@ -63,41 +63,10 @@ const AppStackNavigator=createStackNavigator({
                      }       
                   })},
   })
-    /*Announcement:{ screen: Announcement,
-      navigationOptions: ({ navigation }) => ({
-        headerStyle: {
-          backgroundColor: "#000051",
-          
-      }
-    })},
-    Assignment:{ screen: Assignment,
-        navigationOptions: ({ navigation }) => ({
-          headerStyle: {
-            backgroundColor: "#000051",
-            
-        }
-    })},
-    Test:{ screen: Assignment,
-      navigationOptions: ({ navigation }) => ({
-        headerStyle: {
-          backgroundColor: "#000051",
-          
-      }
-  })},
-  Dashboard:{ screen: Dashboard,
-    navigationOptions: ({ navigation }) => ({
-      headerStyle: {
-        backgroundColor: "#000051",
-        
-    }
-})},
-})*/
 
 export default function App() {
   return (
-      <View style={{flex:1}}>
-        {/* //paddingTop: 
-      //Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }} */}
+      <View style={{flex:1,paddingTop: StatusBar.currentHeight}}>
       <AppStackNavigator/>
       </View>
   );

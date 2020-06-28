@@ -126,7 +126,7 @@ class AssignmentScreen extends Component{
                       key={1}
                       title='Assignment I'
                       imageSrc={{ uri: 'https://lh3.googleusercontent.com/proxy/TlkzO_9Y3epAK-0Jrjsu899lzvnnZFmv-1ul9pOglBifxfp9wuaRcKf5ui1wPSIrxOKFNhtN3drmCzxK6K9IWD0bDdLyaIFDz97QJtGw4EI'}}
-                      caption="Tap to submit Assignment"
+                      caption="Tap to upload Assignment"
                       fontWeight='bold'
                       featured
                       titleStyle={{color:'white',fontWeight:"bold"}}
@@ -137,7 +137,7 @@ class AssignmentScreen extends Component{
                       key={2}
                       title='Assignment II'
                       imageSrc={{ uri: 'https://www.itl.cat/pngfile/big/106-1068753_funny-minimalistic-oranges-grey-background-background-cartoon.png'}}
-                      caption="Tap to submit Assignment"
+                      caption="Tap to upload Assignment"
                       titleStyle={{color:'black',fontWeight:"bold"}}
                       captionStyle={{color:'black',fontWeight:"bold"}}
                       featured
@@ -147,7 +147,7 @@ class AssignmentScreen extends Component{
                       key={3}
                       title='Assignment III'
                       imageSrc={{ uri: 'https://cdn.wallpapersafari.com/96/40/4r5iaA.jpg'}}
-                      caption="Tap to submit Assignment"
+                      caption="Tap to upload Assignment"
                       titleStyle={{color:'white',fontWeight:"bold"}}
                       captionStyle={{color:'white',fontWeight:"bold"}}
                       featured
@@ -248,7 +248,7 @@ class TestScreen extends Component{
                   key={1}
                   title='Internal Assessment I'
                   imageSrc={{ uri: 'https://cdn.wallpapersafari.com/64/85/dGfQ4L.png'}}
-                  caption="Tap to submit Test"
+                  caption="Tap to upload Test"
                   fontWeight='bold'
                   featured
                   titleStyle={{color:'white',fontWeight:"bold"}}
@@ -259,7 +259,7 @@ class TestScreen extends Component{
                   key={2}
                   title='Internal Assessment II'
                   imageSrc={{ uri: 'https://c4.wallpaperflare.com/wallpaper/749/281/320/minimalism-shark-fish-bones-wallpaper-preview.jpg'}}
-                  caption="Tap to submit Test"
+                  caption="Tap to upload Test"
                   titleStyle={{color:'gray',fontWeight:"bold"}}
                   captionStyle={{color:'gray',fontWeight:"bold"}}
                   featured
@@ -269,7 +269,7 @@ class TestScreen extends Component{
                   key={3}
                   title='Internal Assessment III'
                   imageSrc={{ uri: 'https://wallpapersprinted.com/download/2/minimal_design-wallpaper-2560x1600.jpg'}}
-                  caption="Tap to submit Test"
+                  caption="Tap to upload Test"
                   titleStyle={{color:'white',fontWeight:"bold"}}
                   captionStyle={{color:'white',fontWeight:"bold"}}
                   featured

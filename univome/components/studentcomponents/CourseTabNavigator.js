@@ -1,13 +1,12 @@
 import React ,{Component } from 'react';
-import {View,Text,ScrollView,Modal, StyleSheet, Picker, Switch, Button,TextInput } from 'react-native';
+import {View,Text,ScrollView,Modal, StyleSheet, Picker, Switch, Button,TextInput,TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { GiftedChat ,Feather} from 'react-native-gifted-chat';
 import * as Animatable from 'react-native-animatable';
-import { Icon,Tile } from 'react-native-elements'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import DocumentPicker from 'react-native-document-picker';
+import { Icon,Tile } from 'react-native-elements';
+import * as DocumentPicker from 'expo-document-picker';
 class ChatScreen extends Component{
     
     constructor(props){
@@ -18,12 +17,16 @@ class ChatScreen extends Component{
                 {"_id": "da172f88-21ab-48bf-9f3a-16eb6b2f73bc", "createdAt": '2020-06-24T18:50:45.744Z', "text": "Welcome to the Student's Control Chat!", "user": {"_id": 2,"avatar": "https://cdn3.vectorstock.com/i/thumb-large/48/37/web-developer-design-vector-5884837.jpg"}},
             ],
         }
-        onSend = async (message = []) => {
-            console.log(message);
-            const newMessages = await GiftedChat.append(this.state.messages, message);
-            await this.setState({messages:(newMessages)});
-          }    
+        
     }
+    componentWillMount(){
+      this.onSend();
+    }
+    onSend = async (message = []) => {
+      console.log(message);
+      const newMessages = await GiftedChat.append(this.state.messages, message);
+      await this.setState({messages:(newMessages)});
+    }    
     static navigationOptions = {
         title: 'Chat',
         tabBarIcon: ({ tintColor }) => (
@@ -43,7 +46,7 @@ class ChatScreen extends Component{
     showUserAvatar={true}
     showAvatarForEveryMessage={true}
     messages={ this.state.messages }
-    onSend={ message => onSend(message) }
+    onSend={ message => this.onSend(message) }
     scrollToBottom
         scrollToBottomComponent={() => (
           <Ionicons name='ios-arrow-round-down' size={30} color='#ff0000' />
@@ -82,6 +85,7 @@ class AssignmentScreen extends Component{
       this.state={
           showModal:false,
           comment:'',
+          res:{},
       }
   }
   toggleModal(){
@@ -96,8 +100,8 @@ class AssignmentScreen extends Component{
   async submitDocument() {
       //Opening Document Picker for selection of one file
       try {
-        const res = await DocumentPicker.pick({
-          type: [DocumentPicker.types.allFiles],
+        const res = await DocumentPicker.getDocumentAsync({
+          // type: [DocumentPicker.types.allFiles],
         });
        
         console.log('res : ' + JSON.stringify(res));
@@ -119,6 +123,7 @@ class AssignmentScreen extends Component{
     }
   
   render(){
+    console.log(this.state);
       return(
           <ScrollView>
               <Animatable.View animation="fadeInRightBig" duration={2000}>                
@@ -167,6 +172,8 @@ class AssignmentScreen extends Component{
                                   numberOfLines={16}
                                   
                                   />
+                                  <Text style = {styles.modalstatus}>Uploaded File:{this.state.document ? this.state.document.name : ''}</Text>
+                                  <Text style = {styles.modalstatus}>Upload Status:{this.state.document? this.state.document.type : ''}</Text>
                                   <TouchableOpacity
                                   style={styles.close}
                                   onPress = {() =>{this.submitDocument(); 
@@ -215,29 +222,29 @@ class TestScreen extends Component{
       this.setState({showModal:false});
   }
   async submitDocument() {
-      //Opening Document Picker for selection of one file
-      try {
-        const res = await DocumentPicker.pick({
-          type: [DocumentPicker.types.allFiles],
-        });
-       
-        console.log('res : ' + JSON.stringify(res));
-        console.log('URI : ' + res.uri);
-        console.log('Type : ' + res.type);
-        console.log('File Name : ' + res.name);
-        console.log('File Size : ' + res.size);
-        
-        this.setState({ document: res });
-      } catch (err) {
-        if (DocumentPicker.isCancel(err)) {
-          alert('Canceled Upload');
-        } else {
-          //For Unknown Error
-          alert('Unknown Error: ' + JSON.stringify(err));
-          throw err;
-        }
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.getDocumentAsync({
+        // type: [DocumentPicker.types.allFiles],
+      });
+     
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      
+      this.setState({ document: res });
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        alert('Canceled Upload');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
       }
     }
+  }
   
   render(){
       console.log(this.state.showModal)
@@ -281,6 +288,7 @@ class TestScreen extends Component{
                           onRequestClose = {() => this.closeModal() }>
                                   <View style = {styles.modal}>
                                   <Text style = {styles.modalTitle}>Submit your Answer Sheet</Text>
+
                                   <TextInput
                                   placeholder="Enter Your Comments Here"
                                   onChangeText={comment => this.setState({comment})}
@@ -289,6 +297,8 @@ class TestScreen extends Component{
                                   numberOfLines={16}
                                   
                                   />
+                                  <Text style = {styles.modalstatus}>Uploaded File:{this.state.document ? this.state.document.name : ''}</Text>
+                                  <Text style = {styles.modalstatus}>Upload Status:{this.state.document? this.state.document.type : ''}</Text>
                                   <TouchableOpacity
                                   style={styles.close}
                                   onPress = {() =>{this.submitDocument(); 
@@ -337,6 +347,15 @@ const styles=StyleSheet.create({
        color: 'white',
        marginBottom: 20
    },
+   modalstatus: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    backgroundColor: 'gray',
+    textAlign: 'center',
+    color: 'white',
+    marginBottom: 20,
+    borderRadius:20
+},
    modalText: {
        fontSize: 18,
        margin: 10

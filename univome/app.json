@@ -4,6 +4,15 @@
   "expo": {
     "name": "univome",
     "slug": "expo-template-bare",
+    "icon":"./components/images/logo.png",
+    "ios": {
+      "bundleIdentifier": "com.univome.univome",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.univome.univome",
+      "versionCode": 1
+    },
     "version": "1.0.0",
     "platforms": [
       "ios",
